@@ -1,38 +1,27 @@
-/******************************************/
-/************    Library by   *************/
-/************     Shiichi     *************/
-/************    2016/05/13   *************/
-/******************************************/
+#######################################
+# Syntax Coloring Map For SiXlib Library
+#######################################
 
-********************************************
-* Syntax Coloring Map For SiXlib		   *
-********************************************
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
 
+SiX	KEYWORD1
 
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
 
-############################################
-# Datatypes (KEYWORD1)					   #
-############################################
-SiX  KEYWORD1
+SetPID	KEYWORD2
+LinePID	KEYWORD2
+Timer	KEYWORD2
+SetMotoPin	KEYWORD2
+Speed	KEYWORD2
+TimeTurn	KEYWORD2
+Curvature	KEYWORD2
+WheelDiffer	KEYWORD2
 
-############################################
-# Methods and Functions (KEYWORD2)		   #
-############################################
-SetPID  KEYWORD2
-LinePID  KEYWORD2
-Timer  KEYWORD2
-SetMotoPin  KEYWORD2
-Speed  KEYWORD2
-TimeTurn  KEYWORD2
-Curvature  KEYWORD2
-WheelDiffer  KEYWORD2
-
-############################################
-# Instances (KEYWORD2)					   #
-############################################
-
-
-############################################
-# Constants (LITERAL1)					   #
-############################################
+#######################################
+# Constants (LITERAL1)
+#######################################
 

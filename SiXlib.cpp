@@ -4,17 +4,22 @@
 /************    2016/05/13   *************/
 /******************************************/
 
-#include "SiXlib.h"
+#if ARDUINO >= 100
+  #include "Arduino.h"
+#else
+  #include "WProgram.h"
+#endif
 
-SiXlib::SiX(void)
+#include <SiXlib.h>
+
+SiX::SiX(void)
 {
 }
 
-double MOD,MAXval,MINval;
-void SiXlib::SetPID(int MOD,double Aval,double Bval)
+void SiX::SetPID(int MODE,double Aval,double Bval)
 {
 //設定輸入訊號是否去小數點
-	if (MOD > 0)
+	if (MODE > 0)
 	 MOD = 1; //是
 	else
 	 MOD = 0; //否
@@ -22,8 +27,7 @@ void SiXlib::SetPID(int MOD,double Aval,double Bval)
 	MINval = Bval;
 }
 
-double interror,olderror;
-void SiXlib::LinePID(double intput,double KP,double KI,double KD)
+void SiX::LinePID(double intput,double KP,double KI,double KD)
 {
 	if (MOD == 1)
 	  intput = ((int)intput);
@@ -40,15 +44,14 @@ void SiXlib::LinePID(double intput,double KP,double KI,double KD)
     return output;
 }
 
-void SiXlib::Timer(int start,unsigned long timekey)
+void SiX::Timer(int start,unsigned long timekey)
 {
   static unsigned long time = start;
   time += timekey;
   return time;
 }
 
-int Pin1A, Pin1B, Pin2A, Pin2B;
-void SiXlib::SetMotoPin(int P1A,int P1B,int P2A,int P2B)
+void SiX::SetMotoPin(int P1A,int P1B,int P2A,int P2B)
 {
 	Pin1A = P1A;
 	Pin1B = P1B;
@@ -56,7 +59,7 @@ void SiXlib::SetMotoPin(int P1A,int P1B,int P2A,int P2B)
 	Pin2B = P2B;
 }
 
-void SiXlib::Speed(int Left,int Right)
+void SiX::Speed(int Left,int Right)
 {
   if (Left > 0) {
     analogWrite(Pin1A, Left);
@@ -76,7 +79,7 @@ void SiXlib::Speed(int Left,int Right)
   }
 }
 
-void SiXlib::TimeTurn(int time,int Left,int Right)
+void SiX::TimeTurn(int time,int Left,int Right)
 {
 	while(1)
 	{
@@ -87,8 +90,7 @@ void SiXlib::TimeTurn(int time,int Left,int Right)
 	}
 }
 
-double OldCorrectVal;
-void SiXlib::WheelDiffer(double CorrectVal,int Frequency)
+void SiX::WheelDiffer(double CorrectVal,int Frequency)
 {
 	if (Frequency <= 0)
 	 Frequency = 1;
