@@ -31,25 +31,28 @@ void SiX::LinePID(double intput,double KP,double KI,double KD)
 {
 	if (MOD == 1)
 	  intput = ((int)intput);
+
     double error = intput;
     interror = (error * KI) + interror;
     double lasterror = (error * KD) - olderror;
     olderror = error;
-    double output = (error + interror + lasterror) * KP;
+    output = (error + interror + lasterror) * KP;
 
     if (intput > MAXval)
       intput = MAXval;
     if (intput < MINval)
       intput = MINval;
-    return output;
 }
+
+double SiX::rePID(){return output;}
 
 void SiX::Timer(int start,unsigned long timekey)
 {
   static unsigned long time = start;
   time += timekey;
-  return time;
 }
+
+unsigned long SiX::reTime(){return time;}
 
 void SiX::SetMotoPin(int P1A,int P1B,int P2A,int P2B)
 {
@@ -69,7 +72,7 @@ void SiX::Speed(int Left,int Right)
     analogWrite(Pin1A, 0);
     analogWrite(Pin1B, -Left);
   }
-  if (B > 0) {
+  if (Right > 0) {
     analogWrite(Pin2A, Right);
     analogWrite(Pin2B, 0);
   }
@@ -84,8 +87,9 @@ void SiX::TimeTurn(int time,int Left,int Right)
 	while(1)
 	{
 		Speed(Left, Right);
-	    static unsigned long ENDt = Timer(0,1);
-		if ((ENDt/(time*1000)) = 1)
+		Timer(0,1);
+	    unsigned long ENDt = reCorval();
+		if ((ENDt/(time*1000)) == 1)
 		  break;
 	}
 }
@@ -102,5 +106,6 @@ void SiX::WheelDiffer(double CorrectVal,int Frequency)
 		  CorrectVal = OldCorrectVal;
 	  	OldCorrectVal = CorrectVal;
 	}
-	return CorrectVal;
 }
+
+double SiX::reCorval(){return CorrectVal;}

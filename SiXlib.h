@@ -11,12 +11,16 @@ class SiX
 {
 
 public:
+	SiX(void);
+
   //功能一: PID
 	void SetPID(int, double, double);
 	void LinePID(double, double, double, double);
+	double rePID();
  				 
   //功能二: 計時器
 	void Timer(int, unsigned long);
+	unsigned long reTime();
  				 
   //功能三: 正負值馬達控制
 	void SetMotoPin(int, int, int, int);
@@ -30,6 +34,7 @@ public:
  				 
   //功能六: 輪差修正
 	void WheelDiffer(double, int);
+	double reCorval();
  				 
 private:
 	int Pin1A;
@@ -38,13 +43,17 @@ private:
 	int Pin2B;
  				 
 	double MOD;
+
+	unsigned long time;
  				 
 	double MAXval;
 	double MINval;
   				 
 	double interror;
 	double olderror;
-			  
+	double output;
+
 	double OldCorrectVal;
+	double CorrectVal;
 };
 #endif
