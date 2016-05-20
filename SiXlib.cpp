@@ -94,6 +94,49 @@ void SiX::TimeTurn(int time,int Left,int Right)
 	}
 }
 
+void SiX::Curvature(double LeftSP, double RightSP)
+{
+	if (LeftSP > RightSP)
+	{
+		Curval = (LeftSP * 100)/RightSP;
+		for(int i = 0; i < CurLV; i++)
+		{
+			for(int j = startLV; i < CurLV; j + plusLV)
+			{
+			  if (Curval < j)
+		      {reCurLV = i; break;}   
+			}
+		}
+	 turnLR = 1; //右轉
+	}
+	else if (LeftSP < RightSP)
+	{
+		Curval = (RightSP * 100)/LeftSP;
+		for(int i = 0; i < CurLV; i++)
+		{
+			for(int j = startLV; i < CurLV; j + plusLV)
+			{
+			  if (Curval < j)
+		      {reCurLV = i; break;}   
+			}
+		}
+	 turnLR = 2; //左轉
+	}
+	else
+	 turnLR = 0; //直走
+}
+
+void SiX::SetCur(int start, int plus, int CurV)
+{
+	startLV = start;
+	plusLV = plus;
+	CurLV = CurV;
+}
+
+int SiX::reCurvature(){return reCurLV;}
+
+int SiX::returnLR(){return turnLR;}
+
 void SiX::WheelDiffer(double CorrectVal,int Frequency)
 {
 	if (Frequency <= 0)

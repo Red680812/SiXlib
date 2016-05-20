@@ -15,11 +15,17 @@ SiX	KEYWORD1
 SetPID	KEYWORD2
 LinePID	KEYWORD2
 Timer	KEYWORD2
-SetMotoPin	KEYWORD2
+rePID	KEYWORD2
+reTime	KEYWORD2
 Speed	KEYWORD2
+SetCur	KEYWORD2
+reCurvature	KEYWORD2
+returnLR	KEYWORD2
+SetMotoPin	KEYWORD2
 TimeTurn	KEYWORD2
 Curvature	KEYWORD2
 WheelDiffer	KEYWORD2
+reCorval	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

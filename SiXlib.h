@@ -31,6 +31,9 @@ public:
  				 
   //功能五: 曲率判斷
 	void Curvature(double, double);
+	void SetCur(int, int, int);
+	int reCurvature();
+	int returnLR();
  				 
   //功能六: 輪差修正
 	void WheelDiffer(double, int);
@@ -41,9 +44,15 @@ private:
 	int Pin1B;
 	int Pin2A;
 	int Pin2B;
+
+	int CurLV;
+	int reCurLV;
+	int startLV;
+	int plusLV;
+	int turnLR;
  				 
 	double MOD;
-
+ 				 
 	unsigned long time;
  				 
 	double MAXval;
@@ -52,6 +61,8 @@ private:
 	double interror;
 	double olderror;
 	double output;
+ 				 
+	double Curval;
 
 	double OldCorrectVal;
 	double CorrectVal;
